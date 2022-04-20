@@ -1,0 +1,53 @@
+<%- include('partials/header.ejs') %>
+
+    <div class="container pt-5 pb-5">
+
+        <div class="p-3 text-center text-white bg-secondary">
+            <h1>All Posts</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 pt-5">
+                <% if(error !== ''){ %>
+                    <div class="alert alert-danger text-center mb-5" role="alert">
+                        <strong> Error ! </strong> <%= error %>
+                      </div>
+                <% } %>
+                <form action="/post/new"  method="post">
+                    <div class="mb-4">
+                        <label for="title" class="form-label">Post Title</label>
+                        <input type="text" name="title" class="form-control" placeholder="Enter title" required id="title" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-4">
+                        <label for="desc" class="form-label">Post Description</label>
+                        <textarea  name="description" class="form-control" id="desc" required placeholder="Enter Description" rows="3"></textarea>
+                      </div>
+                    <button type="submit" name="status" value="0" class="btn btn-primary">Publish</button>
+                    <button type="submit" value="1" name="status" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" class="btn btn-warning">Save as Draft</button>
+                    <button type="reset" class="btn btn-danger">Clear</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header border-0">
+              <h5 class="modal-title" id="exampleModalLabel">Delete Post</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to Hide Post
+            </div>
+            <div class="modal-footer border-0">
+              <button type="button" class="btn btn-warning" data-bs-dismiss="modal">No</button>
+              <button type="submit" value="1" class="btn btn-info" name="status" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" class="btn btn-warning">Yes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+
+
+
+    <%- include('partials/footer.ejs') %>

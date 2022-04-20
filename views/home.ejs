@@ -1,0 +1,39 @@
+<%- include('partials/header.ejs') %>
+
+    <div class="container pt-5 pb-5">
+
+        <% if(msg !== ''){ %>
+            <div class="alert alert-info text-center" role="alert">
+                <strong> Success ! </strong> <%= msg %>
+              </div>
+        <% } %>
+
+        <div class="p-3 text-center text-white bg-secondary">
+            <h1>All Posts</h1>
+        </div>
+        <div class="row">
+            <div class="col">
+
+                <% blogpost.forEach ((blog)=>{ %>
+                    <div class="card pt-5 border-0">
+
+                        <div class="card-body">
+                            <h2 class="card-title">
+                                <%=blog.title%>
+                            </h2>
+                            <span class="small-text">
+                                <%=blog.created%>
+                            </span>
+                            <p class="card-text">
+                                <%-(blog.description).substring(0,200)+"..."%>
+                            </p>
+
+                            <a href="/post/<%=blog.id%>" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                    <hr>
+            <% }) %>
+        </div>
+    </div>
+    </div>
+    <%- include('partials/footer.ejs') %>
